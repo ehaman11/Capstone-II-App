@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, Button, Alert } from 'react-native';
 const Prof = ({ route }) => {
   return(
     <View style={styles.container}>
-    <Text style={{ fontSize:20 }}>Hello!</Text>
+    <Text style={{ fontSize:20 }}>Hi!</Text>
     <Text>Edit your profile by clicking here</Text>
     </View>
   )
