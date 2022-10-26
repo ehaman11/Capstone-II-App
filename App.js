@@ -10,11 +10,11 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-function App() {
+function App({route}) {
   return(
     <Stack.Navigator screenOptions={{ headerTintColor: 'white', headerStyle: { backgroundColor: '#45b1e8' }, }}>
-      <Stack.Screen name="Log In" component={LogIn} options={{ title: '', }}/>
-      <Stack.Screen name="Home" component={MyTabs}/>
+      <Stack.Screen name="Log In" component={LogIn} options={{ title: 'title', }}/>
+      <Stack.Screen name="Home" component={Prof}/>
     </Stack.Navigator>
   )
 }
@@ -32,6 +32,7 @@ export default () => {
   return(
     <NavigationContainer>
       <App/>
+      <View>Text</View>
     </NavigationContainer>
   )
 }
