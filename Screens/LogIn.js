@@ -30,6 +30,13 @@ const LogIn = () => {
                 paramPass: passw
             })}
         />
+        {/*<View>
+        <Button
+            title='Sign In'
+            mode='contained'
+            onPress={() => navigation.navigate('Home')}
+        />
+        </View>*/}
     </View>
   )
 }
