@@ -34,8 +34,8 @@ const Home = () => {
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', bottom: 50 }}>
       <FadeIn>
         {/*<Text style={{fontSize: 28, textAlign: 'center', margin: 10}}>Fading in</Text>*/}
-        <Image source={{ uri: 'https://toppng.com/uploads/preview/outline-of-missouri-missouri-11563161643ecat63yyqg.png', width: 200, height: 200 }} />
         <Text style={{ fontSize: 40, color: '#00bfff' }}>MissouriMe</Text>
+        <Image source={{ uri: 'https://toppng.com/uploads/preview/outline-of-missouri-missouri-11563161643ecat63yyqg.png', width: 200, height: 200 }} />
           <Button
             title='Begin'
             mode='contained'

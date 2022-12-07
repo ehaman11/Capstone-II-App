@@ -7,6 +7,7 @@ import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import Home from './Screens/Home';
 import Search from './Screens/Search';
 import Favorite from './Screens/Favorite';
+import All_Schools from './Screens/All_Schools';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -29,6 +30,8 @@ function MyTabs() {
           iconName = focused ? 'ios-search-sharp' : 'ios-search';
         } else if (route.name === 'Favorite') {
           iconName = focused ? 'ios-star' : 'ios-star-outline';
+        } else if (route.name === 'All Schools') {
+          iconName = focused ? 'ios-navigate' : 'ios-navigate-outline';
         }
         return <Ionicons name={iconName} size={size} color={color} />;
       },
@@ -38,6 +41,7 @@ function MyTabs() {
   >
       <Tab.Screen name="Search" component={Search} />
       <Tab.Screen name="Favorite" component={Favorite} />
+      <Tab.Screen name="All Schools" component={All_Schools} />
     </Tab.Navigator>
   )
 }
