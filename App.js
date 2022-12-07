@@ -2,12 +2,11 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from "@expo/vector-icons";
-import { Text, View } from 'react-native';
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 
-import LogIn from './Screens/LogIn';
-import Prof from './Screens/Prof';
-import Search from './Screens/Search_copy';
-import Add from './Screens/Add';
+import Home from './Screens/Home';
+import Search from './Screens/Search';
+import Favorite from './Screens/Favorite';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -15,25 +14,9 @@ const Tab = createBottomTabNavigator();
 function App({route}) {
   return(
     <Stack.Navigator screenOptions={{ headerTintColor: 'white', headerStyle: { backgroundColor: '#45b1e8' }, }}>
-      <Stack.Screen name="Log In" component={LogIn} options={{ title: '', }}/>
-      <Stack.Screen name="Home" component={MyTabs} options={{ title: '', }}/>
+      <Stack.Screen name="Home" component={Home} options={{ title: '', }}/>
+      <Stack.Screen name="Tabs" component={MyTabs} options={{ title: '', }}/>
     </Stack.Navigator>
-  )
-}
-
-function SettingsScreen() {
-  return(
-    <View style= {{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Settings</Text>
-    </View>
-  )
-}
-
-function Favorites() {
-  return(
-    <View style= {{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Your favorites will appear here!</Text>
-    </View>
   )
 }
 
@@ -42,14 +25,9 @@ function MyTabs() {
     <Tab.Navigator screenOptions={({ route }) => ({
       tabBarIcon: ({ focused, color, size }) => {
         let iconName;
-
-        if (route.name === 'Profile') {
-          iconName = focused
-            ? 'ios-person-circle'
-            : 'ios-person-circle-outline';
-        } else if (route.name === 'Search') {
+        if (route.name === 'Search') {
           iconName = focused ? 'ios-search-sharp' : 'ios-search';
-        } else if (route.name === 'Add') {
+        } else if (route.name === 'Favorite') {
           iconName = focused ? 'ios-star' : 'ios-star-outline';
         }
         return <Ionicons name={iconName} size={size} color={color} />;
@@ -58,9 +36,8 @@ function MyTabs() {
       tabBarInactiveTintColor: 'gray',
     })}
   >
-      <Tab.Screen name="Profile" component={Prof} />
       <Tab.Screen name="Search" component={Search} />
-      <Tab.Screen name="Add" component={Add} />
+      <Tab.Screen name="Favorite" component={Favorite} />
     </Tab.Navigator>
   )
 }
@@ -68,7 +45,7 @@ function MyTabs() {
 export default () => {
   return(
     <NavigationContainer>
-      <App/>
+        <App/>
     </NavigationContainer>
   )
 }

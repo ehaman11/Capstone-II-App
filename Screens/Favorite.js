@@ -1,15 +1,12 @@
-import { StatusBar } from 'expo-status-bar';
-import { KeyboardAvoidingView, Platform, StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard } from 'react-native';
+import { Keyboard, KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import React, {useState} from 'react';
 
-export default function Add() {
-  {/* Creating a State in a functional component in React */}
-  {/* coll is the name of the state */}
-  {/* it will track the college that we input */}
-  {/* setColl is the function we will use to set the state */}
-  const [coll, setColl] = useState();
-  const [collItems, setCollItems] = useState([]);
-  const colleges = ['A T Still University of Health Sciences',
+export default function Favorite() {
+  {/* school is  state in React... it will track the college that we input */}
+  {/* setSchool is the function we will use to set the state */}
+  const [school, setSchool] = useState();
+  const [schoolItems, setSchoolItems] = useState([]);
+  const schools = ['A T Still University of Health Sciences',
     'Academy of Hair Design-Springfield',
     'Academy of Salon Professionals',
     'Aesthetics Institute',
@@ -167,30 +164,29 @@ export default function Add() {
     'Westminster College',
     'William Jewell College',
     'William Woods University'];
- 
-  {/* we want to store all tasks the user inputs into an array so we can map over them*/}
   
-  {/* This function will log the task that we have stored in the state */}
-  const handleAddColl = (props) => {
+  {/* This function will log the school that we have stored in the state */}
+  const handleAddSchool = (props) => {
     Keyboard.dismiss(); {/* moving keyboard down after user types */}
-    if (colleges.includes(coll)){
-        console.log(coll);
-        setCollItems([...collItems, coll]);
+    if (schools.includes(school)){
+        console.log(school);
+        {/* setting schoolItems as whatever was already in the school array plus the new school */}
+        {/* this whole ... thing basically just add appends new task to existing array */}
+        setSchoolItems([...schoolItems, school]);
     } else {
-      console.log('College not found');
+      console.log('School not found');
     }
-    {/* setting collItems as whatever was already in the task array plus the new task */}
-    {/* this whole ... thing basically just add appends new task to existing array */}
     
-    {/* doing this so after user inputs task the 'write a task' bar is empty */}
-    setColl(null);
+    
+    {/* doing this so after user inputs college the 'Add to your favorites' bar is empty */}
+    setSchool(null);
   }
 
   {/* taking in index of array so we can pop out task of array */}
-  const deleteColl = (index) => {
-    let itemsCopy = [...collItems];{/* creating an array copy */}
+  const deleteSchool = (index) => {
+    let itemsCopy = [...schoolItems];{/* creating an array copy */}
     itemsCopy.splice(index, 1); {/* remove item from array and store in itemsCopy */}
-    setCollItems(itemsCopy);
+    setSchoolItems(itemsCopy);
   }
 
   const Task = (props) => {
@@ -208,39 +204,34 @@ export default function Add() {
 
   return (
     <View style={styles.container}>
-
-      {/* Today's tasks!!! */}
       <View style={styles.tasksWrapper}>
-        <Text style={styles.sectionTitle}>Colleges!</Text>
-
         <View style={styles.Items}>
-          {/* This is where the tasks will go! */}
-          {/* iterate over array and output a task item for every item in array */}
+          {/* This is where the schools will go! */}
+          {/* iterate over array and output a school item for every item in array */}
           {
-            collItems.map((item, index) => {
+            schoolItems.map((item, index) => {
               return (
-                <TouchableOpacity key={index} onPress={() => deleteColl(index)}>
+                <TouchableOpacity key={index} onPress={() => deleteSchool(index)}>
                   <Task text={item}/>
                 </TouchableOpacity>
               )
             })
           }
         </View>
-      
       </View>
 
-      {/* Write a task */}
+      {/* Write a school */}
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.writeTaskWrapper}>
-        {/* Everytime the text here changes, we will grab that task and set the task to be that text */}
+        {/* Everytime the text here changes, we will grab that school and set the school to be that school */}
         <TextInput 
           style={styles.input} 
-          placeholder={'Search for a college'} 
-          value={coll} 
-          onChangeText={text => setColl(text)}
+          placeholder={'Add to your favorites'} 
+          value={school} 
+          onChangeText={text => setSchool(text)}
         />
-        <TouchableOpacity onPress={() => handleAddColl()}>
+        <TouchableOpacity onPress={() => handleAddSchool()}>
           <View style={styles.addWrapper}>
             <Text style={styles.addText}>+</Text>
           </View>
@@ -272,7 +263,7 @@ const styles = StyleSheet.create({
   },
   writeTaskWrapper: {
     position: 'absolute',
-    top: 50,
+    top: 10,
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-around',
